@@ -178,7 +178,12 @@
 <body>
     <header class="header">
         <div class="logo"><span style="font-size:1.6rem">🎹</span><h1>Frequency Studio Pro</h1></div>
-        <div class="rec-badge" id="recBadge"><div class="rec-dot"></div><span>REC</span></div>
+        <div style="display:flex;align-items:center;gap:12px">
+            <div class="rec-badge" id="recBadge"><div class="rec-dot"></div><span>REC</span></div>
+            <div style="background:rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;font-size:0.85rem">
+                <span style="color:var(--dim)">Oct</span> <span id="octaveDisplay" style="color:var(--accent);font-weight:600">4</span>
+            </div>
+        </div>
     </header>
     
     <div class="tabs">
@@ -193,7 +198,7 @@
         <!-- PIANO -->
         <div class="panel active" id="panelPiano">
             <div class="card">
-                <h3 class="card-title">🎵 Piano Coloré <span class="badge">AZERTY</span></h3>
+                <h3 class="card-title">🎵 Piano Coloré <span class="badge">QWERTY/AZERTY</span></h3>
                 <div class="octave-selector">
                     <button class="octave-btn" data-octave="2">Oct 2</button>
                     <button class="octave-btn" data-octave="3">Oct 3</button>
@@ -202,13 +207,13 @@
                     <button class="octave-btn" data-octave="6">Oct 6</button>
                 </div>
                 <div class="piano-keys" id="pianoKeys">
-                    <div class="piano-key do" data-note="C"><span class="key-note">Do</span><span class="key-freq">261.63</span><span class="key-shortcut">A</span></div>
-                    <div class="piano-key re" data-note="D"><span class="key-note">Ré</span><span class="key-freq">293.66</span><span class="key-shortcut">Z</span></div>
-                    <div class="piano-key mi" data-note="E"><span class="key-note">Mi</span><span class="key-freq">329.63</span><span class="key-shortcut">E</span></div>
-                    <div class="piano-key fa" data-note="F"><span class="key-note">Fa</span><span class="key-freq">349.23</span><span class="key-shortcut">R</span></div>
-                    <div class="piano-key sol" data-note="G"><span class="key-note">Sol</span><span class="key-freq">392.00</span><span class="key-shortcut">T</span></div>
-                    <div class="piano-key la" data-note="A"><span class="key-note">La</span><span class="key-freq">440.00</span><span class="key-shortcut">Y</span></div>
-                    <div class="piano-key si" data-note="B"><span class="key-note">Si</span><span class="key-freq">493.88</span><span class="key-shortcut">U</span></div>
+                    <div class="piano-key do" data-note="C"><span class="key-note">Do</span><span class="key-freq">261.63</span><span class="key-shortcut">S</span></div>
+                    <div class="piano-key re" data-note="D"><span class="key-note">Ré</span><span class="key-freq">293.66</span><span class="key-shortcut">D</span></div>
+                    <div class="piano-key mi" data-note="E"><span class="key-note">Mi</span><span class="key-freq">329.63</span><span class="key-shortcut">F</span></div>
+                    <div class="piano-key fa" data-note="F"><span class="key-note">Fa</span><span class="key-freq">349.23</span><span class="key-shortcut">G</span></div>
+                    <div class="piano-key sol" data-note="G"><span class="key-note">Sol</span><span class="key-freq">392.00</span><span class="key-shortcut">H</span></div>
+                    <div class="piano-key la" data-note="A"><span class="key-note">La</span><span class="key-freq">440.00</span><span class="key-shortcut">J</span></div>
+                    <div class="piano-key si" data-note="B"><span class="key-note">Si</span><span class="key-freq">493.88</span><span class="key-shortcut">K</span></div>
                 </div>
                 <div class="duration-btns">
                     <button class="duration-btn" data-dur="0.125" title="Double croche">𝅘𝅥𝅯</button>
@@ -216,6 +221,18 @@
                     <button class="duration-btn active" data-dur="0.5" title="Noire">♩</button>
                     <button class="duration-btn" data-dur="1" title="Blanche">𝅗𝅥</button>
                     <button class="duration-btn" data-dur="2" title="Ronde">𝅝</button>
+                </div>
+                <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:12px;margin-top:16px;font-size:0.75rem;color:var(--dim)">
+                    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">S D F G H J K</kbd> Notes</span>
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">1-7</kbd> Notes (alt)</span>
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">↑↓</kbd> Octave</span>
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">←→</kbd> Tempo</span>
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">Space</kbd> Play</span>
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">Ctrl+R</kbd> Record</span>
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">M</kbd> Metronome</span>
+                        <span><kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px">Ctrl+Z</kbd> Undo</span>
+                    </div>
                 </div>
                 <div class="visualizer"><canvas id="pianoVis"></canvas></div>
             </div>
@@ -248,6 +265,7 @@
                     </select>
                     <button class="btn btn-sm btn-secondary" onclick="clearSequencer()">🗑️ Clear</button>
                     <button class="btn btn-sm btn-secondary" onclick="randomSequencer()">🎲 Random</button>
+                    <button class="btn btn-sm btn-secondary" onclick="undoRecording()">↩️ Undo Rec</button>
                 </div>
                 <div class="seq-container"><div class="seq-grid" id="seqGrid"></div></div>
             </div>
@@ -411,7 +429,20 @@ const NOTE_FREQS = {
     'B': [61.74,123.47,246.94,493.88,987.77,1975.53,3951.07]
 };
 
-const KEY_MAP = { 'KeyA':'C','KeyZ':'D','KeyE':'E','KeyR':'F','KeyT':'G','KeyY':'A','KeyU':'B' };
+// Mapping clavier universel QWERTY/AZERTY (touches identiques sur les deux layouts)
+// Rangée home row: S D F G H J K = Do Ré Mi Fa Sol La Si
+// Alternative chiffres: 1 2 3 4 5 6 7
+const KEY_MAP = {
+    // Home row (identique QWERTY/AZERTY)
+    'KeyS': 'C', 'KeyD': 'D', 'KeyF': 'E', 'KeyG': 'F',
+    'KeyH': 'G', 'KeyJ': 'A', 'KeyK': 'B',
+    // Chiffres (alternative)
+    'Digit1': 'C', 'Digit2': 'D', 'Digit3': 'E', 'Digit4': 'F',
+    'Digit5': 'G', 'Digit6': 'A', 'Digit7': 'B',
+    // Numpad
+    'Numpad1': 'C', 'Numpad2': 'D', 'Numpad3': 'E', 'Numpad4': 'F',
+    'Numpad5': 'G', 'Numpad6': 'A', 'Numpad7': 'B'
+};
 
 let audioCtx, masterGain, analyser;
 let binL, binR;
@@ -466,6 +497,9 @@ function initPiano() {
             btn.classList.add('active');
             state.octave = parseInt(btn.dataset.octave);
             updatePianoFreqs();
+            // Mettre à jour l'affichage dans le header
+            const octDisp = document.getElementById('octaveDisplay');
+            if (octDisp) octDisp.textContent = state.octave;
         };
     });
     
@@ -521,12 +555,16 @@ function playNote(freq, dur = 0.5) {
 }
 
 // ============================================
-// KEYBOARD
+// KEYBOARD - Gestion clavier universelle
 // ============================================
 function initKeyboard() {
     const pressed = new Set();
+    
     document.addEventListener('keydown', e => {
+        // Éviter les répétitions
         if (pressed.has(e.code)) return;
+        
+        // Notes du piano
         if (KEY_MAP[e.code]) {
             pressed.add(e.code);
             const note = KEY_MAP[e.code];
@@ -539,16 +577,80 @@ function initKeyboard() {
                 if (state.recording) recordNote(note, freq);
                 flashLight();
             }
+            return;
         }
-        if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+        
+        // Raccourcis globaux
+        switch(e.code) {
+            case 'Space':
+                e.preventDefault();
+                togglePlay();
+                break;
+            case 'KeyR':
+                if (e.ctrlKey || e.metaKey) {
+                    e.preventDefault();
+                    toggleRecord();
+                }
+                break;
+            case 'KeyM':
+                toggleMetronome();
+                break;
+            case 'KeyZ':
+                if (e.ctrlKey || e.metaKey) {
+                    e.preventDefault();
+                    undoRecording();
+                }
+                break;
+            case 'Escape':
+                stopAll();
+                break;
+            // Changer d'octave avec les flèches ou +/-
+            case 'ArrowUp':
+            case 'Equal': // + sur QWERTY
+            case 'NumpadAdd':
+                e.preventDefault();
+                changeOctave(1);
+                break;
+            case 'ArrowDown':
+            case 'Minus': // - sur QWERTY
+            case 'NumpadSubtract':
+                e.preventDefault();
+                changeOctave(-1);
+                break;
+            // Changer le tempo
+            case 'ArrowRight':
+                changeTempo(5);
+                break;
+            case 'ArrowLeft':
+                changeTempo(-5);
+                break;
+        }
     });
+    
     document.addEventListener('keyup', e => {
         pressed.delete(e.code);
         if (KEY_MAP[e.code]) {
-            const key = document.querySelector(`.piano-key[data-note="${KEY_MAP[e.code]}"]`);
+            const note = KEY_MAP[e.code];
+            const key = document.querySelector(`.piano-key[data-note="${note}"]`);
             if (key) key.classList.remove('playing');
         }
     });
+}
+
+// Changer d'octave avec les touches
+function changeOctave(delta) {
+    const newOctave = Math.max(2, Math.min(6, state.octave + delta));
+    if (newOctave !== state.octave) {
+        state.octave = newOctave;
+        document.querySelectorAll('.octave-btn').forEach(btn => {
+            btn.classList.toggle('active', parseInt(btn.dataset.octave) === state.octave);
+        });
+        updatePianoFreqs();
+        // Mettre à jour l'affichage dans le header
+        const octDisp = document.getElementById('octaveDisplay');
+        if (octDisp) octDisp.textContent = state.octave;
+        console.log(`🎹 Octave: ${state.octave}`);
+    }
 }
 
 // ============================================
@@ -624,7 +726,7 @@ function randomSequencer() {
 }
 
 // ============================================
-// RECORDING
+// RECORDING - Enregistrement temps réel dans le séquenceur
 // ============================================
 function toggleRecord() {
     state.recording = !state.recording;
@@ -634,30 +736,61 @@ function toggleRecord() {
     if (state.recording) {
         recordBuffer = [];
         recordStart = audioCtx ? audioCtx.currentTime : Date.now() / 1000;
+        // Démarrer la lecture si pas déjà en cours
         if (!state.playing) togglePlay();
+        console.log('🔴 Recording started - play notes to add to sequencer');
     } else {
-        convertRecordToSeq();
+        console.log('⏹️ Recording stopped');
     }
 }
 
 function recordNote(note, freq) {
-    const time = (audioCtx ? audioCtx.currentTime : Date.now() / 1000) - recordStart;
-    recordBuffer.push({ note, time, duration: state.duration });
-}
-
-function convertRecordToSeq() {
-    if (!recordBuffer.length) return;
-    const stepDur = 60 / state.tempo / 4;
+    if (!state.recording) return;
+    
     const steps = parseInt(document.getElementById('seqSteps').value);
     
+    // Utiliser le step actuel du séquenceur (quantization automatique)
+    const targetStep = state.step;
+    
+    // Ajouter la note au séquenceur immédiatement (mode overdub)
+    if (state.seq[note]) {
+        state.seq[note][targetStep] = true;
+        
+        // Mettre à jour l'UI immédiatement avec effet visuel
+        const cell = document.querySelector(`.seq-cell[data-note="${note}"][data-step="${targetStep}"]`);
+        if (cell) {
+            cell.classList.add('active');
+            // Effet flash pour montrer l'ajout
+            cell.style.transform = 'scale(1.3)';
+            cell.style.boxShadow = '0 0 20px var(--accent)';
+            setTimeout(() => {
+                cell.style.transform = '';
+                cell.style.boxShadow = '';
+            }, 200);
+        }
+        
+        console.log(`📝 Recorded: ${note} → step ${targetStep + 1}/${steps}`);
+    }
+    
+    // Garder dans le buffer pour undo
+    recordBuffer.push({ note, step: targetStep });
+}
+
+// Undo dernier enregistrement
+function undoRecording() {
+    if (recordBuffer.length === 0) {
+        console.log('Nothing to undo');
+        return;
+    }
     recordBuffer.forEach(ev => {
-        const step = Math.floor(ev.time / stepDur) % steps;
         if (state.seq[ev.note]) {
-            state.seq[ev.note][step] = true;
-            const cell = document.querySelector(`.seq-cell[data-note="${ev.note}"][data-step="${step}"]`);
-            if (cell) cell.classList.add('active');
+            state.seq[ev.note][ev.step] = false;
+            const cell = document.querySelector(`.seq-cell[data-note="${ev.note}"][data-step="${ev.step}"]`);
+            if (cell) cell.classList.remove('active');
         }
     });
+    recordBuffer = [];
+    console.log('↩️ Recording undone');
 }
 
 // ============================================
